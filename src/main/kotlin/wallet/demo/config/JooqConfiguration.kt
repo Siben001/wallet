@@ -1,6 +1,5 @@
 package wallet.demo.config
 
-import com.zaxxer.hikari.HikariDataSource
 import io.r2dbc.spi.ConnectionFactory
 import org.jooq.DSLContext
 import org.jooq.SQLDialect
@@ -13,11 +12,11 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class JooqConfiguration(
-    private val dataSource: HikariDataSource
+    private val connectionFactory: ConnectionFactory
 ) {
     @Bean
     fun jooqDSLContext(): DSLContext {
-        return DSL.using(dataSource, SQLDialect.POSTGRES, settings).dsl()
+        return DSL.using(connectionFactory, SQLDialect.POSTGRES, settings).dsl()
     }
 
     private val settings = Settings()

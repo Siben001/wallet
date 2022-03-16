@@ -26,10 +26,8 @@ repositories {
 	mavenCentral()
 }
 dependencies {
-// implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-// implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -46,7 +44,7 @@ dependencies {
 	jooqGenerator("org.liquibase:liquibase-core:3.10.3")
 	jooqGenerator("org.slf4j:slf4j-jdk14:1.7.30")
 	runtimeOnly("org.postgresql:postgresql")
-//  runtimeOnly("io.r2dbc:r2dbc-postgresql")
+	runtimeOnly("io.r2dbc:r2dbc-postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }
@@ -99,5 +97,4 @@ jooq {
 	}
 }
 tasks.named<nu.studer.gradle.jooq.JooqGenerate>("generateJooq") { allInputsDeclared.set(true) }
-
 

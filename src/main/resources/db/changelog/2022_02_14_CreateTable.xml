@@ -1,0 +1,17 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="2022_03_14_CreateTable" author="khoreshko.e.v">
+        <createTable tableName="PAYMENT">
+            <column name="ID" type="varchar(128)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="AMOUNT" type="integer">
+            </column>
+            <column name="TIMESTAMP" type="timestamp">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

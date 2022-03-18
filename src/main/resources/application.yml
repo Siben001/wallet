@@ -10,3 +10,9 @@ spring:
     user: demo
     password: "demo"
     change-log: classpath:db/changelog/db.changelog-master.xml
+logging:
+  level:
+    org:
+      jooq:
+        tools:
+          LoggerListener: DEBUG

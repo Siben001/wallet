@@ -1,29 +1,28 @@
 package wallet.demo.controller
 
-import kotlinx.coroutines.coroutineScope
 import mu.KLogging
-import wallet.demo.dto.Message
-import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import wallet.demo.service.WalletService
-import java.time.ZonedDateTime
+import wallet.demo.dto.Message
+import wallet.demo.dto.TimeInterval
+import wallet.demo.service.impl.WalletServiceImpl
 
 @RestController
 class WalletController(
-    val service: WalletService
+    val service: WalletServiceImpl
 ) {
     companion object : KLogging()
 
-    @GetMapping
-    suspend fun index() = coroutineScope {
-        val res = service.getBalance()
-        logger.info { res.map { "${it}\n" } }
+    @PostMapping("/balance")
+    suspend fun getBalanceHistory(@RequestBody timeInterval: TimeInterval): ResponseEntity<*> {
+        val res = service.getBalanceHistory(timeInterval.startDatetime, timeInterval.endDatetime)
+        return ResponseEntity.ok(res)
     }
 
-    @PostMapping
-    suspend fun getPayment(@RequestBody message: Message) {
+    @PostMapping("/save")
+    suspend fun savePayment(@RequestBody message: Message) {
         service.savePayment(message)
     }
 }

@@ -1,7 +1,6 @@
 package wallet.demo.config
 
 import com.zaxxer.hikari.HikariDataSource
-import io.r2dbc.spi.ConnectionFactory
 import org.jooq.DSLContext
 import org.jooq.SQLDialect
 import org.jooq.conf.RenderNameCase

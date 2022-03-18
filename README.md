@@ -4,7 +4,7 @@ You can start docker in IDEA from docker-compose itself or from terminal:
 ```
 docker-compose -f ./docker/docker-compose.yml up -d postgres
 ```
-###Project
+### Project
 Load gradle project and then start application/bootRun gradle task
 # About project
 ## Main idea
